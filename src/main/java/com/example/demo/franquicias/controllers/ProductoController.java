@@ -41,7 +41,7 @@ public class ProductoController {
      * Endpoint para eliminar un producto de una sucursal
      * @param productoId ID del producto a eliminar
      * @param sucursalId ID de la sucursal asociada al producto a eliminar
-     * @return
+     * @return Producto eliminado, si se elimino con exito el producto
      */
     @DeleteMapping("/{productoId}/sucursal/{sucursalId}")
     @ResponseStatus(HttpStatus.OK)

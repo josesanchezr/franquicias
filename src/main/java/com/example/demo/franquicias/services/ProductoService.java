@@ -38,7 +38,7 @@ public class ProductoService {
      * Método encargado de eliminar un producto de una sucursal
      * @param productoId ID del producto
      * @param sucursalId ID de la sucursal
-     * @return
+     * @return Producto eliminado, si se elimino con exito el producto
      */
     public Mono<String> deleteProducto(Long productoId, Long sucursalId) {
         return productoRepository.deleteByIdAndSucursalId(productoId, sucursalId)
