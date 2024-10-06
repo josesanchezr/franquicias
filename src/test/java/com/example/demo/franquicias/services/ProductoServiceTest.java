@@ -206,6 +206,9 @@ public class ProductoServiceTest {
         verify(productoRepository, times(1)).findMaxStockByFranquicia(franquiciaId);
     }
 
+    /**
+     * Test para actualizar el nombre de un producto
+     */
     @Test
     void testUpdateNombreProducto_success() {
         Long productoId = 1L; // ID del producto a actualizar
@@ -236,6 +239,9 @@ public class ProductoServiceTest {
         verify(productoRepository, times(1)).save(producto);
     }
 
+    /**
+     * Test para actualizar el nombre de un producto, donde el producto no existe
+     */
     @Test
     void testUpdateNombreProducto_notFound() {
         Long productoId = 1L; // ID del producto a actualizar
