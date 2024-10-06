@@ -1,5 +1,7 @@
 package com.example.demo.franquicias.services;
 
+import com.example.demo.franquicias.exceptions.FranquiciaNotFoundException;
+import com.example.demo.franquicias.exceptions.ProductoNotFoundException;
 import com.example.demo.franquicias.models.Franquicia;
 import com.example.demo.franquicias.models.Sucursal;
 import com.example.demo.franquicias.repositories.FranquiciaRepository;
@@ -35,7 +37,29 @@ public class FranquiciaService {
         return franquiciaRepository.save(franquicia);
     }
 
+    /**
+     * Método encargado de obtener todas las franquicias
+     * @return listado de todas las franquicias
+     */
     public Flux<Franquicia> getAllFranquicias() {
         return franquiciaRepository.findAll();
+    }
+
+    /**
+     * Método encargado de actualizar el nombre de una franquicia
+     * @param franquiciaId ID de la franquicia
+     * @param newNombre nuevo nombre de la franquicia
+     * @return datos de la franquicia actualizada
+     */
+    public Mono<Franquicia> updateNombreFranquicia(Long franquiciaId, String newNombre) {
+        return franquiciaRepository.findById(franquiciaId)
+                .switchIfEmpty(
+                        Mono.error(
+                                new FranquiciaNotFoundException(
+                                        String.format("Franquicia con id %d no encontrada", franquiciaId)))
+                ).flatMap(franquicia -> {
+                    franquicia.setNombre(newNombre);
+                    return franquiciaRepository.save(franquicia);
+                });
     }
 }

@@ -66,4 +66,19 @@ public class FranquiciaController {
             @PathVariable("franquiciaId") Long franquiciaId) {
         return productoService.obtenerProductoConMayorStockPorSucursal(franquiciaId);
     }
+
+    /**
+     * Endpoint para actualizar el nombre de una franquicia
+     * @param franquiciaId ID de la franquicia
+     * @param newNombre nuevo nombre de la franquicia
+     * @return datos de la franquicia actualizada
+     */
+    @PutMapping("/{franquiciaId}/update-nombre")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Franquicia> updateNombreFranquicia(
+            @PathVariable("franquiciaId") Long franquiciaId,
+            @RequestParam("newNombre") String newNombre) {
+        log.info("Actualizando el nombre de la franquicia {}", franquiciaId);
+        return franquiciaService.updateNombreFranquicia(franquiciaId, newNombre);
+    }
 }
