@@ -1,7 +1,6 @@
 package com.example.demo.franquicias.services;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -21,6 +20,9 @@ import reactor.test.StepVerifier;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Clase para los unit tests de la clase ProductoService
+ */
 public class ProductoServiceTest {
 
     @Mock
