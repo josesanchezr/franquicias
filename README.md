@@ -19,5 +19,12 @@ Aplicación desarrollada en Java 17 con Spring Boot 3.3.4, que usa programación
 2. Crear imagen docker de la aplicación con el comando: `docker build -t franquicias-app .`
 3. Ejecutar imagen docker de la aplicación en local con el comando: 
    `docker run -e SERVER_PORT=8080 -e DB_CONNECTION=r2dbc:mysql://host.docker.internal:3306/franquiciasdb -e DB_USERNAME=usuario_db -e DB_PASSWORD=password_db -p 8080:8080 franquicias-app:latest`
-4. 
+
+## Para crear la instancia de AWS RDS con MySQL 8.0
+Dentro de la carpeta terraform-project se encuentra configurado con terraform la opción de crear la infraestructura
+de la instancia AWS RDS con MySQL 8.0.
+1. Ir a la carpeta terraform-project
+2. Ejecutar el comando: `terraform init`
+3. Ejecutar el comando: `terraform plan`
+4. Ejecutar el comando: `terraform apply`
 
