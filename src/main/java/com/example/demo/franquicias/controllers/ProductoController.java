@@ -65,4 +65,19 @@ public class ProductoController {
             @RequestParam("newStock") Integer newStock) {
         return productoService.updateProductoStock(productoId, newStock);
     }
+
+    /**
+     * Endpoint para actualizar el nombre de un producto
+     * @param productoId ID del producto
+     * @param newName nuevo nombre del producto
+     * @return datos del producto actualizado
+     */
+    @PutMapping("/{productoId}/update-nombre")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Producto> updateNombreProducto(
+            @PathVariable("productoId") Long productoId,
+            @RequestParam("newName") String newName) {
+        log.info("Actualizando el nombre del producto {}", productoId);
+        return productoService.updateNombreProducto(productoId, newName);
+    }
 }

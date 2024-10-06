@@ -81,4 +81,23 @@ public class ProductoService {
     public Flux<Producto> obtenerProductoConMayorStockPorSucursal(Long franquiciaId) {
         return productoRepository.findMaxStockByFranquicia(franquiciaId);
     }
+
+    /**
+     * Método encargado de actualizar el nombre de un producto
+     * @param productoId ID del producto
+     * @param newNombre nuevo nombre del producto
+     * @return datos del producto actualizado
+     */
+    public Mono<Producto> updateNombreProducto(Long productoId, String newNombre) {
+        return productoRepository.findById(productoId)
+                .switchIfEmpty(Mono.error(
+                        new ProductoNotFoundException(
+                                String.format("Producto con id %d no encontrado", productoId)
+                        )
+                ))
+                .flatMap(producto -> {
+                    producto.setNombre(newNombre);
+                    return productoRepository.save(producto);
+                });
+    }
 }
