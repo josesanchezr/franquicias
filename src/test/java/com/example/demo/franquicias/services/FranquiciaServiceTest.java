@@ -18,6 +18,9 @@ import reactor.test.StepVerifier;
 
 import java.util.Arrays;
 
+/**
+ * Clase para los unit tests de la clase FranquiciaService
+ */
 public class FranquiciaServiceTest {
 
     @Mock
