@@ -28,3 +28,6 @@ de la instancia AWS RDS con MySQL 8.0.
 3. Ejecutar el comando: `terraform plan`
 4. Ejecutar el comando: `terraform apply`
 
+## Para ejecutar los unit tests
+Para ejecutar los tests y generar reporte de la cobertura:
+1. Ejecutar el comando `./gradlew test jacocoTestReport`
