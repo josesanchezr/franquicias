@@ -42,7 +42,7 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-
 bootJar {
 	archiveFileName = 'franquicias-app.jar'
+	destinationDirectory = file("$buildDir/target")
 }
