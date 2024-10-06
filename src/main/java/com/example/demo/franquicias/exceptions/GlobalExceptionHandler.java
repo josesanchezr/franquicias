@@ -26,6 +26,32 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Método para manejar las excepciones de tipo {@link SucursalNotFoundException}
+     * @param exception excepción con el mensaje de error
+     * @return excepción con mensaje de error
+     */
+    @ExceptionHandler(SucursalNotFoundException.class)
+    public Mono<ResponseEntity<ResponseError>> handleSucursalNotFoundException(SucursalNotFoundException exception) {
+        return Mono.just(
+                ResponseEntity
+                        .status(HttpStatus.NOT_FOUND)
+                        .body(this.createResponseError(exception.getMessage())));
+    }
+
+    /**
+     * Método para manejar las excepciones de tipo {@link FranquiciaNotFoundException}
+     * @param exception excepción con el mensaje de error
+     * @return excepción con mensaje de error
+     */
+    @ExceptionHandler(FranquiciaNotFoundException.class)
+    public Mono<ResponseEntity<ResponseError>> handleFranquiciaNotFoundException(FranquiciaNotFoundException exception) {
+        return Mono.just(
+                ResponseEntity
+                        .status(HttpStatus.NOT_FOUND)
+                        .body(this.createResponseError(exception.getMessage())));
+    }
+
+    /**
      * Método para crear un objeto de repuesta de error
      * @param message mensaje de error
      * @return objeto de error

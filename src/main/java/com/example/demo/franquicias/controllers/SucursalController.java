@@ -36,4 +36,19 @@ public class SucursalController {
         log.info("Creando nueva sucursal con los datos: {}", sucursal.toString());
         return sucursalService.createSucursal(sucursal);
     }
+
+    /**
+     * Endpoint para actualizar el nombre de una sucursal
+     * @param sucursalId ID de la sucursal
+     * @param newNombre nuevo nombre de la sucursal
+     * @return datos de la sucursal actualizada
+     */
+    @PutMapping("/{sucursalId}/update-nombre")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Sucursal> updateNombreSucursal(
+            @PathVariable("sucursalId") Long sucursalId,
+            @RequestParam("newNombre") String newNombre) {
+        log.info("Actualizando el nombre de la sucursal {}", sucursalId);
+        return sucursalService.updateNombreSucursal(sucursalId, newNombre);
+    }
 }
