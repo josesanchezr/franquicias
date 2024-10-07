@@ -28,6 +28,12 @@ de la instancia AWS RDS con MySQL 8.0.
 3. Ejecutar el comando: `terraform plan`
 4. Ejecutar el comando: `terraform apply`
 
+## Para crear las tablas para la base de datos
+Dentro de la carpeta scripts se encuentra el archivo franquicias.sql,
+este archivo contiene el DDL para la creación de las tablas que usa esta aplicación.
+1. Ir a la carpeta scripts.
+2. Ejecutar el comando: `mysql -h MYSQL_HOST -u USER_NAME -p franquiciasdb < franquicias.sql`
+
 ## Para ejecutar los unit tests
 Para ejecutar los tests y generar reporte de la cobertura:
 1. Ejecutar el comando `./gradlew test jacocoTestReport`
